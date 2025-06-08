@@ -101,7 +101,7 @@ function TermsContent() {
                     </p>
                     <h2 className="text-2xl font-semibold mt-6 mb-2">9. 聯絡方式</h2>
                     <p>
-                        如對本使用條款有任何疑問，請聯絡：<strong>support@mopupapp.com</strong>
+                        如對本使用條款有任何疑問，請聯絡：<strong>support@mopup.app</strong>
                     </p>
                 </>
             )}

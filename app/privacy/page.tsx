@@ -123,7 +123,7 @@ function PrivacyContent() {
 
                     <h2 className="text-2xl font-semibold mt-6 mb-2">8. 聯絡我們</h2>
                     <p>
-                        如有任何關於私隱的問題，請電郵至：<strong>support@mopupapp.com</strong>
+                        如有任何關於私隱的問題，請電郵至：<strong>support@mopup.app</strong>
                     </p>
                 </>
             )}
