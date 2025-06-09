@@ -74,6 +74,11 @@ const styles: { [key: string]: React.CSSProperties } = {
         color: '#0070f3',
         fontSize: 16,
         cursor: 'pointer',
+
+        marginTop: 50,
+        marginBottom: 20,
+        alignSelf: 'flex-start',
+
     },
     form: {
         display: 'flex',
