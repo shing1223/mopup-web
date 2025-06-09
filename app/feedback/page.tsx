@@ -2,6 +2,15 @@
 
 import { useState } from 'react';
 
+declare global {
+    interface Window {
+        ReactNativeWebView?: {
+            postMessage: (message: string) => void;
+        };
+    }
+}
+
+
 export default function FeedbackPage() {
     const [submitted, setSubmitted] = useState(false);
     const [message, setMessage] = useState('');
