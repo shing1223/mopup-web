@@ -2,7 +2,7 @@
 
 export default function HomePage() {
   return (
-    <main className="relative h-screen w-full text-white font-['Plus Jakarta Sans','Noto Sans',sans-serif']">
+    <main className="relative h-screen w-full text-white font-sans">
       {/* 背景圖層 */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -17,9 +17,11 @@ export default function HomePage() {
         <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
           Mopup毛伴
         </h1>
+
         <h2 className="text-base md:text-lg font-normal mb-6">
           The ultimate pet care companion. Download the app today!
         </h2>
+
         <div className="flex flex-wrap justify-center gap-3">
           <a
             href="https://apps.apple.com"
@@ -39,6 +41,16 @@ export default function HomePage() {
           </a>
         </div>
       </div>
+
+      {/* 頁腳連結 */}
+      <footer className="absolute bottom-4 left-0 right-0 z-10 flex justify-center text-xs text-white/80 space-x-4">
+        <a href="/privacy" className="hover:underline">
+          Privacy Policy
+        </a>
+        <a href="/terms" className="hover:underline">
+          Terms of Service
+        </a>
+      </footer>
     </main>
   );
 }

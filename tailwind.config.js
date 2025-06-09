@@ -1,17 +1,16 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',       // App Router 頁面與元件
-    './components/**/*.{js,ts,jsx,tsx}', // 自訂元件（若有）
-    './pages/**/*.{js,ts,jsx,tsx}',      // 若有舊 pages 目錄
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: 'var(--font-geist-sans)',
-        mono: 'var(--font-geist-mono)',
+        sans: 'var(--font-plusjakarta), var(--font-notosans), sans-serif',
       },
     },
   },
   plugins: [],
-}
+};
