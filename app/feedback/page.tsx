@@ -66,23 +66,18 @@ const styles: { [key: string]: React.CSSProperties } = {
         position: 'relative',
     },
     backButton: {
-        position: 'absolute',
-        top: 10,
-        left: 10,
         backgroundColor: 'transparent',
         border: 'none',
         color: '#0070f3',
         fontSize: 16,
         cursor: 'pointer',
-
-        marginTop: 50,
         marginBottom: 20,
         alignSelf: 'flex-start',
-
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'flex-start',
         gap: 12,
     },
     textarea: {
