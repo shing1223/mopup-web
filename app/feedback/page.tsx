@@ -10,7 +10,6 @@ declare global {
     }
 }
 
-
 export default function FeedbackPage() {
     const [submitted, setSubmitted] = useState(false);
     const [message, setMessage] = useState('');
@@ -20,19 +19,20 @@ export default function FeedbackPage() {
 
         if (!message.trim()) return;
 
-        // ✅ 可以改成你自己的 API 寫入 Firestore 或寄 Email 等
         console.log('📝 使用者建議：', message);
 
         setSubmitted(true);
 
-        // ✅ 傳送成功訊息給 React Native WebView
-        if (typeof window !== 'undefined' && window.ReactNativeWebView) {
-            window.ReactNativeWebView.postMessage('submitted');
-        }
+        window.ReactNativeWebView?.postMessage('submitted');
     };
 
     return (
         <main style={styles.container}>
+            {/* 🔙 返回按鈕 */}
+            <button onClick={() => window.ReactNativeWebView?.postMessage('back')} style={styles.backButton}>
+                ← 返回
+            </button>
+
             {!submitted ? (
                 <form onSubmit={handleSubmit} style={styles.form}>
                     <h2>💡 意見回饋</h2>
@@ -63,6 +63,17 @@ const styles: { [key: string]: React.CSSProperties } = {
         margin: '40px auto',
         padding: 20,
         fontFamily: 'sans-serif',
+        position: 'relative',
+    },
+    backButton: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        backgroundColor: 'transparent',
+        border: 'none',
+        color: '#0070f3',
+        fontSize: 16,
+        cursor: 'pointer',
     },
     form: {
         display: 'flex',
