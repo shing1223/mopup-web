@@ -10,7 +10,7 @@ export default function HomePage() {
         <div className="min-h-[480px] w-full flex flex-col items-center justify-center gap-6 bg-cover bg-center rounded-lg px-4 py-10 text-center"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('/hero.jpg')",
+              "linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('/hero.png')",
           }}
         >
           <h1 className="text-4xl md:text-5xl font-black tracking-tight">Mopup毛伴</h1>
