@@ -13,23 +13,40 @@ declare global {
 export default function FeedbackPage() {
     const [submitted, setSubmitted] = useState(false);
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!message.trim()) return;
 
-        console.log('📝 使用者建議：', message);
+        setLoading(true);
 
-        setSubmitted(true);
+        try {
+            const res = await fetch('/api/send-feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),
+            });
 
-        window.ReactNativeWebView?.postMessage('submitted');
+            if (!res.ok) {
+                throw new Error('寄送失敗');
+            }
+
+            setSubmitted(true);
+            window.ReactNativeWebView?.postMessage('submitted');
+        } catch (error) {
+            alert('寄送失敗，請稍後再試');
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <main style={styles.container}>
-            {/* 🔙 返回按鈕 */}
-
             {!submitted ? (
                 <form onSubmit={handleSubmit} style={styles.form}>
                     <h2>💡 意見回饋</h2>
@@ -40,8 +57,8 @@ export default function FeedbackPage() {
                         rows={6}
                         style={styles.textarea}
                     />
-                    <button type="submit" style={styles.button}>
-                        送出建議
+                    <button type="submit" style={styles.button} disabled={loading}>
+                        {loading ? '送出中…' : '送出建議'}
                     </button>
                 </form>
             ) : (
@@ -61,15 +78,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         padding: 20,
         fontFamily: 'sans-serif',
         position: 'relative',
-    },
-    backButton: {
-        backgroundColor: 'transparent',
-        border: 'none',
-        color: '#0070f3',
-        fontSize: 16,
-        cursor: 'pointer',
-        marginBottom: 20,
-        alignSelf: 'flex-start',
     },
     form: {
         display: 'flex',

@@ -31,13 +31,6 @@ export default function HelpPage() {
 
     return (
         <main className="min-h-screen bg-white text-gray-800 p-6 sm:p-12">
-            <button
-                onClick={() => router.back()}
-                className="mb-6 text-blue-600 hover:underline flex items-center gap-2"
-            >
-                <span>← 返回</span>
-            </button>
-
             <h1 className="text-3xl font-bold text-[#004B97] mb-8">🆘 幫助中心</h1>
 
             <div className="space-y-8">
