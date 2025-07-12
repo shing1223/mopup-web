@@ -29,9 +29,6 @@ export default function FeedbackPage() {
     return (
         <main style={styles.container}>
             {/* 🔙 返回按鈕 */}
-            <button onClick={() => window.ReactNativeWebView?.postMessage('back')} style={styles.backButton}>
-                ← 返回
-            </button>
 
             {!submitted ? (
                 <form onSubmit={handleSubmit} style={styles.form}>
