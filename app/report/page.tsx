@@ -13,23 +13,40 @@ declare global {
 export default function ReportPage() {
     const [submitted, setSubmitted] = useState(false);
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!message.trim()) return;
 
-        console.log('🐞 回報問題：', message);
+        setLoading(true);
 
-        setSubmitted(true);
+        try {
+            const res = await fetch('/api/send-report', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),
+            });
 
-        window.ReactNativeWebView?.postMessage('submitted');
+            if (!res.ok) {
+                throw new Error('寄送失敗');
+            }
+
+            setSubmitted(true);
+            window.ReactNativeWebView?.postMessage('submitted');
+        } catch (err) {
+            console.error('🐞 發送錯誤:', err);
+            alert('寄送失敗，請稍後再試');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <main style={styles.container}>
-            {/* 🔙 返回按鈕 */}
-
             {!submitted ? (
                 <form onSubmit={handleSubmit} style={styles.form}>
                     <h2>🐞 回報問題</h2>
@@ -40,8 +57,8 @@ export default function ReportPage() {
                         rows={6}
                         style={styles.textarea}
                     />
-                    <button type="submit" style={styles.button}>
-                        回報！
+                    <button type="submit" style={styles.button} disabled={loading}>
+                        {loading ? '送出中…' : '回報！'}
                     </button>
                 </form>
             ) : (
