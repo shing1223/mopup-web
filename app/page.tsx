@@ -26,7 +26,7 @@ export default function HomePage() {
 
     <div className="flex flex-wrap justify-center gap-3">
       <a
-        href="https://apps.apple.com"
+        href="https://apps.apple.com/hk/app/%E6%AF%9B%E4%BC%B4-mopup/id6748514354"
         target="_blank"
         rel="noopener noreferrer"
         className="h-12 px-6 rounded-full bg-[#607afb] text-white font-bold text-sm md:text-base flex items-center"
